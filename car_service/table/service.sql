@@ -10,13 +10,13 @@ CREATE TABLE service(
  ,price                NUMBER         
  ,part_id              NUMBER         
  ,date_of_service      DATE           DEFAULT SYSDATE NOT NULL
- ,last_modfied         DATE           DEFAULT SYSDATE NOT NULL
+ ,mod_user            varchar2(300)
+ ,registered          timestamp      NOT NULL
+ ,last_modfied        timestamp      NOT NULL
+ ,DML_FLAG            varchar2(1)
+ ,VERSION             number
 ) 
 TABLESPACE users;
-
-
-ALTER TABLE service
-  ADD CONSTRAINT service_pk PRIMARY KEY (service_id);
   
     
 COMMENT ON TABLE service IS 'Szolgáltatás/szerviz tábla';

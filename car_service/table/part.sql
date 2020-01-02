@@ -8,15 +8,14 @@ CREATE TABLE part(
  ,weight            NUMBER(5,2)
  ,part_guarantee    NUMBER
  ,material          VARCHAR2(20)
- ,registered        DATE           DEFAULT SYSDATE NOT NULL
- ,last_modfied      DATE           DEFAULT SYSDATE NOT NULL
+ ,mod_user            varchar2(300)
+ ,registered          timestamp      NOT NULL
+ ,last_modfied        timestamp      NOT NULL
+ ,DML_FLAG            varchar2(1)
+ ,VERSION             number
 ) 
 TABLESPACE users;
 
-
-ALTER TABLE part
-  ADD CONSTRAINT part_pk PRIMARY KEY (part_id);
-  
     
 COMMENT ON TABLE part IS 'Alkatrészek tábla';
 COMMENT ON COLUMN part.part_price IS 'alkatrész ár/db';

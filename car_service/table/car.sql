@@ -11,15 +11,14 @@ CREATE TABLE car(
  ,owner_id            NUMBER
  ,service_status      NUMBER
  ,last_serviced       DATE           
- ,registered          DATE           DEFAULT SYSDATE NOT NULL
- ,last_modfied        DATE           DEFAULT SYSDATE NOT NULL
+ ,mod_user            varchar2(300)
+ ,registered          timestamp      NOT NULL
+ ,last_modfied        timestamp      NOT NULL
+ ,DML_FLAG            varchar2(1)
+ ,VERSION             number
 ) 
 TABLESPACE users;
 
-
-ALTER TABLE car
-  ADD CONSTRAINT car_pk PRIMARY KEY (car_id);
-  
 
 COMMENT ON TABLE car IS 'Autók tábla';
 COMMENT ON COLUMN car.brand IS 'Márka';

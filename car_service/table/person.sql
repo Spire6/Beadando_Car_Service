@@ -12,15 +12,14 @@ CREATE TABLE person(
  ,email               VARCHAR2(100)
  ,number_of_services  NUMBER
  ,discount            NUMBER
- ,registered          DATE           DEFAULT SYSDATE NOT NULL
- ,last_modfied        DATE           DEFAULT SYSDATE NOT NULL
+ ,mod_user            varchar2(300)
+ ,registered          timestamp      NOT NULL
+ ,last_modfied        timestamp      NOT NULL
+ ,DML_FLAG            varchar2(1)    
+ ,VERSION             number
 ) 
 TABLESPACE users;
 
-
-ALTER TABLE person
-  ADD CONSTRAINT person_pk PRIMARY KEY (person_id);
-  
     
 COMMENT ON TABLE person IS 'Személyek tábla';
 COMMENT ON COLUMN person.number_of_services IS 'Szervizelések száma';
