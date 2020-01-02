@@ -28,3 +28,4 @@ COMMENT ON COLUMN car.mileage IS 'Kilóméteróra állása';
 COMMENT ON COLUMN car.service_status IS 'Szerviz állapota';
   
 PROMPT Done.
+

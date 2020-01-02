@@ -8,7 +8,7 @@ CREATE TABLE service(
  ,owner_id             NUMBER         
  ,waiting_time         NUMBER 
  ,price                NUMBER         
- ,part_id              NUMBER         
+ ,part_id              NUMBER        
  ,date_of_service      DATE           DEFAULT SYSDATE NOT NULL
  ,mod_user            varchar2(300)
  ,registered          timestamp      NOT NULL
