@@ -34,12 +34,21 @@ ALTER TABLE car
 
 
 
+ALTER TABLE person
+  ADD CONSTRAINT phone_ck UNIQUE (phone);
+
 ALTER TABLE car
   ADD CONSTRAINT car_license_plate_uk UNIQUE (license_plate);
   
 ALTER TABLE car
   ADD CONSTRAINT car_license_plate_ck CHECK (LENGTH(license_plate) = 7 );
   
+ALTER TABLE car
+  ADD CONSTRAINT car_year_low_ck CHECK (model_year > 1900);
+  
+ALTER TABLE car
+  ADD CONSTRAINT car_year_high_ck CHECK (model_year <= 2020);
+   
 ALTER TABLE car
   ADD CONSTRAINT car_model_year_ck CHECK (model_year <= EXTRACT(YEAR FROM last_serviced) );
 

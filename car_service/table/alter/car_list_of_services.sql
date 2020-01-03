@@ -4,7 +4,7 @@ PROMPT Add service_list to car table...
 
 
  UPDATE car c
-   SET c.list_of_service = ty_service_list(ty_service(c.car_id, 'Regisztráció', SYSDATE))
+   SET c.list_of_service = ty_service_list(ty_service(c.car_id, 'Regisztráció', TRUNC(SYSDATE)))
    WHERE c.list_of_service is NULL;
 
 

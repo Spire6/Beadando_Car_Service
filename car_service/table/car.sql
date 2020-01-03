@@ -6,10 +6,10 @@ CREATE TABLE car(
  ,license_plate       VARCHAR2(10)   NOT NULL 
  ,brand               VARCHAR2(40)   NOT NULL 
  ,model_type          VARCHAR2(40)   NOT NULL
- ,model_year          NUMBER(4)      NOT NULL
+ ,model_year          NUMBER(4)      
  ,mileage             NUMBER(6)
- ,owner_id            NUMBER
- ,service_status      NUMBER
+ ,owner_id            NUMBER		 NOT NULL
+ ,service_status      NUMBER		 DEFAULT 0
  ,last_serviced       DATE           
  ,mod_user            varchar2(300)
  ,registered          DATE           NOT NULL

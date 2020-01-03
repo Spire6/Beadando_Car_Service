@@ -10,7 +10,7 @@ INSERT INTO person(first_name, last_name, birth_date, city, address, phone, emai
     VALUES('Dénes','Lajos', to_date('07-09-1995', 'dd-mm-yyyy'), 'Pécs', 'Hungária u.', '+36202284775', 'ana9@mail.com', 21);  
     
 INSERT INTO person(first_name, last_name, birth_date, city, address, phone, email, number_of_services)
-    VALUES('István','Baba', to_date('17-04-1969', 'dd-mm-yyyy'), 'Pécs', 'Sándor u.', '+36201234775', 'bela4@mail.com', 14);
+    VALUES('István','Baba', to_date('17-04-1969', 'dd-mm-yyyy'), 'Pécs', 'Sándor u.', '+36206234775', 'bela4@mail.com', 14);
     
 INSERT INTO person(first_name, last_name, birth_date, city, address, phone, email, number_of_services)
     VALUES('Ádám','Fenyõ', to_date('15-02-1986', 'dd-mm-yyyy'), 'Kozármisleny', 'Jegenye u.', '+36209937775', 'kaport@mail.com', 5);

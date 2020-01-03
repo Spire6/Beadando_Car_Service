@@ -25,13 +25,15 @@ PROMPT Done
 PROMPT Creating Types...
  @./type/ty_service.typ
  @./type/ty_service_list.tps
-
+Prompt Done
  
- 
--- PROMPT Creating Packages...
-
 
 -- PROMPT Creating Views, Functions
+
+
+-- PROMPT Creating Packages...
+@./package/add_new.pck
+@./package/change_status.pck
 
 
 PROMPT Creating tiggers...
@@ -40,7 +42,6 @@ PROMPT Creating tiggers...
  @./trigger/service_trg.trg
  @./trigger/part_trg.trg
  @./trigger/service_status_trg.trg
-
 PROMPT Done
 
 
@@ -69,10 +70,17 @@ PROMPT Creating alters, Primary, Foreign keys...
 PROMPT Done
 
 
-
--- recompile. recompile utáni hiba esetén kivétel dobása javasolt
+PROMPT Recompile...
 DECLARE
+ ex_error exception;
+ pragma exception_init(ex_error, -20001);
 BEGIN
-  dbms_utility.compile_schema('CAR_MANAGER');
+  
+   dbms_utility.compile_schema('CAR_MANAGER');
+-- raise_application_error( -20001, 'Hiba történt a telepítés közben.' );
+  
+EXCEPTION 
+  WHEN OTHERS THEN
+     RAISE ex_error;
 END;
 /
