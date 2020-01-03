@@ -22,10 +22,16 @@ PROMPT Creating history tables...
 PROMPT Done
 
 
--- PROMPT Creating types...
+PROMPT Creating Types...
+ @./type/ty_service.typ
+ @./type/ty_service_list.tps
+
+ 
+ 
+-- PROMPT Creating Packages...
 
 
--- PROMPT Creating packages...
+-- PROMPT Creating Views, Functions
 
 
 PROMPT Creating tiggers...
@@ -34,6 +40,7 @@ PROMPT Creating tiggers...
  @./trigger/service_trg.trg
  @./trigger/part_trg.trg
  @./trigger/service_status_trg.trg
+
 PROMPT Done
 
 
@@ -43,6 +50,7 @@ PROMPT Loading sample data...
  @./table/data/person_data.sql
  @./table/data/car_data.sql
  @./table/data/service_data.sql
+ 
 PROMPT Done
 
 
@@ -57,7 +65,9 @@ PROMPT Done
 
 PROMPT Creating alters, Primary, Foreign keys...
  @./table/alter/alter.sql
+ @./table/alter/car_list_of_services.sql
 PROMPT Done
+
 
 
 -- recompile. recompile utáni hiba esetén kivétel dobása javasolt

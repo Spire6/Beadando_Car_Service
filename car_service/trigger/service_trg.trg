@@ -24,6 +24,5 @@ BEGIN
     :new.version  := :old.version + 1;      
   END IF;
 
-
 END service_trg;
 /

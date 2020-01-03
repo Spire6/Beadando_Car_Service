@@ -1,0 +1,19 @@
+CREATE OR REPLACE TYPE ty_service AS OBJECT
+(
+ car_id           NUMBER,
+ service_name     VARCHAR2(40),
+ date_of_service  DATE,
+ 
+ CONSTRUCTOR FUNCTION ty_service RETURN SELF AS RESULT
+ 
+)
+/
+CREATE OR REPLACE TYPE BODY ty_service IS
+
+  CONSTRUCTOR FUNCTION ty_service RETURN SELF AS RESULT IS
+  BEGIN
+    RETURN;
+  END;
+
+END;
+/
