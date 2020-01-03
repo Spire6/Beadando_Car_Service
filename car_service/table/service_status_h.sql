@@ -5,8 +5,8 @@ CREATE TABLE service_status_h(
   status_id           NUMBER         
  ,status_name         VARCHAR2(40)             
  ,mod_user            varchar2(300)
- ,registered          timestamp      
- ,last_modfied        timestamp      
+ ,registered          DATE      
+ ,last_modfied        DATE      
  ,DML_FLAG            varchar2(1)
  ,VERSION             number
 ) 

@@ -33,7 +33,10 @@ BEGIN
       :new.discount := 10;
   ELSIF :new.number_of_services > 10
       THEN
-      :new.discount := 5;    
+      :new.discount := 5;
+  ELSIF :new.number_of_services < 10
+      THEN
+      :new.discount := 0;   
   END IF;
   
 

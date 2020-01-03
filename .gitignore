@@ -1,2 +1,6 @@
-# ~SQL files...
 *.~sql
+*.~trg
+*.~pck
+*.~spc
+*.~prc
+*.~pdc

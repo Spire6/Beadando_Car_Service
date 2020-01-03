@@ -6,14 +6,14 @@ CREATE TABLE car_h(
  ,license_plate       VARCHAR2(10)   
  ,brand               VARCHAR2(40)   
  ,model_type          VARCHAR2(40) 
- ,model_year          NUMBER        
- ,mileage             NUMBER
+ ,model_year          NUMBER(4)     
+ ,mileage             NUMBER(6)
  ,owner_id            NUMBER
  ,service_status      NUMBER
  ,last_serviced       DATE           
  ,mod_user            varchar2(300)
- ,registered          timestamp      
- ,last_modfied        timestamp      
+ ,registered          DATE      
+ ,last_modfied        DATE      
  ,DML_FLAG            varchar2(1)
  ,VERSION             number
 ) 
