@@ -1,18 +1,15 @@
 PROMPT Add service_list to car table...
 
- ALTER TABLE car ADD (list_of_service ty_service_list) NESTED TABLE list_of_service STORE AS list_of_service_table;
+ --ALTER TABLE car ADD (list_of_service ty_service_list) NESTED TABLE list_of_service STORE AS list_of_service_table;
 
 
- UPDATE car c
-   SET c.list_of_service = ty_service_list(ty_service(c.car_id, 'Regisztráció', TRUNC(SYSDATE)))
-   WHERE c.list_of_service is NULL;
+UPDATE car c
+  SET c.list_of_service = ty_service_list(ty_service(c.car_id, 'Regisztráció', TRUNC(SYSDATE)))
+ WHERE c.list_of_service is NULL;
 
 
 -- Delete --
 -- ALTER TABLE car DROP COLUMN list_of_service;
-
-
-PROMPT Done
 
 
 DECLARE
@@ -35,3 +32,4 @@ BEGIN
 END;
 /
 
+PROMPT Done

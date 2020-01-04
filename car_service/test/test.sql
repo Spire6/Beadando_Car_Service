@@ -16,7 +16,6 @@ END;
 SELECT * FROM person;
 
 
-
 BEGIN
   add_new.new_car(p_license_plate => 'ABC-123',
                   p_brand         => 'toyota',
@@ -39,6 +38,7 @@ BEGIN
 END;
 /
 SELECT * FROM service;
+
 ---------------------------------------------------------------------------------------------------
 
 BEGIN
@@ -46,7 +46,7 @@ BEGIN
 END;
 /
 SELECT * FROM CAR;
-
+--SELECT * FROM person WHERE person_id=903;
 
 BEGIN
   change_status.finish_service(500);
@@ -62,6 +62,26 @@ END;
 SELECT * FROM CAR;
 
 ---------------------------------------------------------------------------------------------------
+
+SELECT search_by.plate_search('AFG-321') FROM dual;
+
+SELECT search_by.plate_search_service(p_plate => 'PRT-629') AS service_history FROM dual;
+
+SELECT search_by.person_search(p_first_name => 'Áron',
+                               p_last_name  => 'Kovács') AS person_contact FROM dual;
+
+
+---------------------------------------------------------------------------------------------------
+
+
+SELECT * FROM max_mileage_vw;
+
+SELECT * FROM max_service_vw;
+
+SELECT * FROM service_history_vw v WHERE v.car_id = 505;
+
+
+
 
 
 

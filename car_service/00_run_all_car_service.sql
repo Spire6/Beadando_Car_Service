@@ -25,15 +25,17 @@ PROMPT Done
 PROMPT Creating Types...
  @./type/ty_service.typ
  @./type/ty_service_list.tps
+ @./type/car_list_of_service.sql 
 Prompt Done
  
-
--- PROMPT Creating Views, Functions
-
+PROMPT Creating Views
+ @./view/views.sql
+PROMPT Done
 
 -- PROMPT Creating Packages...
-@./package/add_new.pck
-@./package/change_status.pck
+ @./package/add_new.pck
+ @./package/change_status.pck
+ @./package/search_by.pck
 
 
 PROMPT Creating tiggers...
@@ -51,7 +53,6 @@ PROMPT Loading sample data...
  @./table/data/person_data.sql
  @./table/data/car_data.sql
  @./table/data/service_data.sql
- 
 PROMPT Done
 
 
@@ -78,7 +79,6 @@ BEGIN
   
    dbms_utility.compile_schema('CAR_MANAGER');
 -- raise_application_error( -20001, 'Hiba történt a telepítés közben.' );
-  
 EXCEPTION 
   WHEN OTHERS THEN
      RAISE ex_error;

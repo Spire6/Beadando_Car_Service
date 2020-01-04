@@ -57,6 +57,7 @@ CREATE OR REPLACE PACKAGE BODY add_new IS
       RAISE ex_error;
   END new_person;
 
+
   PROCEDURE new_car(p_license_plate IN VARCHAR2
                    ,p_brand         IN VARCHAR2
                    ,p_model_type    IN VARCHAR2

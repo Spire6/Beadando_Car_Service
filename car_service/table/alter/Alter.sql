@@ -35,7 +35,10 @@ ALTER TABLE car
 
 
 ALTER TABLE person
-  ADD CONSTRAINT phone_ck UNIQUE (phone);
+  ADD CONSTRAINT phone_uk UNIQUE (phone);
+  
+ALTER TABLE person
+  ADD CONSTRAINT age_ck CHECK ((EXTRACT(YEAR FROM birth_date) ) < 2002);
 
 ALTER TABLE car
   ADD CONSTRAINT car_license_plate_uk UNIQUE (license_plate);

@@ -7,7 +7,7 @@ INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id
   VALUES('Lengõkar javítás', 512, 911, 45, 12900, 106, to_date('25-11-2018', 'dd-mm-yyyy'));
   
 INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
-  VALUES('Fékek cseréje', 505, 902, 60, 10500, 116, to_date('10-12-2017', 'dd-mm-yyyy'));
+  VALUES('Fékek cseréje', 505, 902, 60, 10500, 116, to_date('11-12-2017', 'dd-mm-yyyy'));
     
 INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
   VALUES('Fényszóró javítás', 515, 908, 20, 5490, 109, to_date('23-10-2019', 'dd-mm-yyyy'));
