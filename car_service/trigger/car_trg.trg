@@ -16,7 +16,10 @@ BEGIN
   
     :new.registered := SYSDATE;
     :new.dml_flag   := 'I';
-    :new.version    := 1;
+    :new.version    := 1; 
+    
+    :new.list_of_service := ty_service_list(ty_service(:new.car_id, 'Regisztráció', TRUNC(SYSDATE))); 
+    
   
   ELSIF updating
   THEN

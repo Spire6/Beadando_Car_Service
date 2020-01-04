@@ -78,7 +78,7 @@ SELECT * FROM max_mileage_vw;
 
 SELECT * FROM max_service_vw;
 
-SELECT * FROM service_history_vw v WHERE v.car_id = 505;
+SELECT * FROM service_history_vw v WHERE v.car_id = 505 ;
 
 
 
