@@ -10,6 +10,8 @@ PROMPT Creating tables...
  @./table/service.sql
  @./table/part.sql
  @./table/service_status.sql
+ @./table/error_log.sql 
+ @./table/car_owner_h.sql 
 PROMPT Done
 
 
@@ -28,14 +30,19 @@ PROMPT Creating Types...
  @./type/car_list_of_service.sql 
 Prompt Done
  
+
 PROMPT Creating Views
  @./view/views.sql
 PROMPT Done
 
--- PROMPT Creating Packages...
+
+PROMPT Creating Packages...
+ @./package/error_log_pck.pck 
  @./package/add_new.pck
  @./package/change_status.pck
  @./package/search_by.pck
+ @./package/change_car.pck 
+PROMPT Done
 
 
 PROMPT Creating tiggers...
@@ -52,6 +59,7 @@ PROMPT Loading sample data...
  @./table/data/part_data.sql
  @./table/data/person_data.sql
  @./table/data/car_data.sql
+ @./table/data/car_list_of_services_register.sql 
  @./table/data/service_data.sql
 PROMPT Done
 
@@ -67,18 +75,15 @@ PROMPT Done
 
 PROMPT Creating alters, Primary, Foreign keys...
  @./table/alter/alter.sql
- @./table/alter/car_list_of_services.sql
 PROMPT Done
 
 
 PROMPT Recompile...
 DECLARE
  ex_error exception;
- pragma exception_init(ex_error, -20001);
+ pragma exception_init(ex_error, -20000);
 BEGIN
-  
    dbms_utility.compile_schema('CAR_MANAGER');
--- raise_application_error( -20001, 'Hiba történt a telepítés közben.' );
 EXCEPTION 
   WHEN OTHERS THEN
      RAISE ex_error;

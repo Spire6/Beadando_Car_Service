@@ -2,9 +2,9 @@ CREATE OR REPLACE VIEW max_mileage_vw AS
 SELECT * FROM 
   (SELECT c.license_plate
         ,c.brand || ' ' || c.model_type AS autó
-        ,MAX(c.mileage) over(PARTITION BY c.license_plate) AS megtett_km
-        ,p.last_name || ' ' || p.first_name as tulajdonos
+        ,MAX(c.mileage) over(PARTITION BY c.license_plate) AS megtett_km    
         ,p.number_of_services AS Szervizek_száma
+        ,p.last_name || ' ' || p.first_name as tulajdonos
         ,p.phone AS Telefonszám
         ,p.email AS Email
     FROM car c
@@ -36,6 +36,6 @@ SELECT * FROM car c WHERE service_status != 0;
 
 
 CREATE OR REPLACE VIEW service_history_vw AS
-SELECT cc.car_id, cc.service_name, cc.date_of_service
+SELECT c.license_plate, cc.service_name, cc.date_of_service
 FROM car c, table(c.list_of_service) cc;
 

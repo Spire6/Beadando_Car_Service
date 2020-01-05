@@ -1,13 +1,19 @@
 PROMPT Loading service...
 
 INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
-  VALUES('Fékek felújítása', 505, 902, 30, 6500, 112, to_date('10-12-2017', 'dd-mm-yyyy'));
+  VALUES('Fékek felújítása', 505, 902, 30, 6500, 112, to_date('11-12-2017', 'dd-mm-yyyy'));
   
 INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
   VALUES('Lengõkar javítás', 512, 911, 45, 12900, 106, to_date('25-11-2018', 'dd-mm-yyyy'));
   
 INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
-  VALUES('Fékek cseréje', 505, 902, 60, 10500, 116, to_date('11-12-2017', 'dd-mm-yyyy'));
+  VALUES('Fékek cseréje', 505, 902, 60, 10500, 116, to_date('05-12-2017', 'dd-mm-yyyy'));
+  
+INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
+  VALUES('Motorháztetõ fényezés', 505, 902, 120, 45000, NULL, to_date('22-04-2016', 'dd-mm-yyyy'));
+  
+INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
+  VALUES('Kuplung csere', 505, 902, 10, 5000, NULL, to_date('25-02-2015', 'dd-mm-yyyy'));
     
 INSERT INTO service(service_name, car_id, owner_id, waiting_time, price, part_id, date_of_service)
   VALUES('Fényszóró javítás', 515, 908, 20, 5490, 109, to_date('23-10-2019', 'dd-mm-yyyy'));

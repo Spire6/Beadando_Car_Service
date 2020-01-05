@@ -13,7 +13,7 @@ CREATE OR REPLACE PACKAGE BODY change_status IS
   PROCEDURE start_service(p_car_id IN NUMBER) IS
     v_status_id NUMBER;
     ex_error EXCEPTION;
-    PRAGMA EXCEPTION_INIT(ex_error, -20000);
+    PRAGMA EXCEPTION_INIT(ex_error, -20001);
   BEGIN
   
     SELECT c.service_status
@@ -26,6 +26,9 @@ CREATE OR REPLACE PACKAGE BODY change_status IS
     THEN
       UPDATE car c SET c.service_status = 2 WHERE c.car_id = p_car_id;
     ELSE
+      error_log_pck.err_log(p_err_message => 'Csak kinti(0) és várakozó(1) státusz autót lehet szervizelni!',
+                            p_err_value   => 'p_car_id = ' || p_car_id,
+                            p_api         => 'change_status.start_service');
       raise_application_error( -20001, 'Csak kinti(0) és várakozó(1) státusz autót lehet szervizelni!' );
     END IF;
   END;
@@ -56,6 +59,9 @@ CREATE OR REPLACE PACKAGE BODY change_status IS
       UPDATE car c SET c.service_status = 3 WHERE c.car_id = p_car_id;
       UPDATE person p SET p.number_of_services = p.number_of_services +1 WHERE p.person_id = v_person_id; 
     ELSE
+       error_log_pck.err_log(p_err_message => 'Csak Szervizelés folyamatban(2) státusz autót lehet befejezni!',
+                            p_err_value   => 'p_car_id = ' || p_car_id,
+                            p_api         => 'change_status.finish_service');
       raise_application_error(-20001, 'Csak Szervizelés folyamatban(2) státusz autót lehet befejezni!');
     END IF; 
   END;
@@ -76,7 +82,10 @@ CREATE OR REPLACE PACKAGE BODY change_status IS
     THEN
       UPDATE car c SET c.service_status = 4 WHERE c.car_id = p_car_id;
     ELSE
-      raise_application_error(-20001, 'Csak Kész, Fizetésre vár(2) státusz autót lehet kifizetni!');
+       error_log_pck.err_log(p_err_message => 'Csak Kész, Fizetésre vár(3) státusz autót lehet kifizetni!',
+                            p_err_value   => 'p_car_id = ' || p_car_id,
+                            p_api         => 'change_status.pay_service');
+      raise_application_error(-20001, 'Csak Kész, Fizetésre vár(3) státusz autót lehet kifizetni!');
     END IF; 
   END;
 

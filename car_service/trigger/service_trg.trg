@@ -17,6 +17,9 @@ BEGIN
     :new.registered := SYSDATE;
     :new.dml_flag   := 'I';
     :new.version    := 1;
+  -----------
+    INSERT INTO THE (SELECT c.list_of_service FROM car c WHERE c.car_id = :new.car_id)
+      VALUES (ty_service(:new.car_id, :new.service_name, :new.date_of_service));
   
   ELSIF updating
   THEN

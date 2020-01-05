@@ -27,6 +27,14 @@ CREATE OR REPLACE PACKAGE BODY search_by IS
        WHERE c.license_plate = p_plate;
     EXCEPTION
       WHEN no_data_found THEN
+        error_log_pck.err_log(p_err_message => dbms_utility.format_error_backtrace,
+                              p_err_value   => 'p_plate = ' || p_plate,
+                              p_api         => 'search_by.plate_search');
+        RAISE ex_error;
+      WHEN OTHERS THEN
+        error_log_pck.err_log(p_err_message => dbms_utility.format_error_backtrace,
+                              p_err_value   => 'p_plate = ' || p_plate,
+                              p_api         => 'search_by.plate_search');
         RAISE ex_error;
     END;
   
@@ -41,43 +49,67 @@ CREATE OR REPLACE PACKAGE BODY search_by IS
     ex_error EXCEPTION;
     PRAGMA EXCEPTION_INIT(ex_error, -20000);
   BEGIN
-    
+  
     BEGIN
-      SELECT p.first_name || ' ' || p.last_name || ',  ' || p.email || ',  ' ||
-             p.phone
+      SELECT p.first_name || ' ' || p.last_name || ',  ' || p.email ||
+             ',  ' || p.phone
         INTO v_contact
         FROM person p
        WHERE p.first_name = p_first_name
          AND p.last_name = p_last_name;
     EXCEPTION
       WHEN no_data_found THEN
+        error_log_pck.err_log(p_err_message => dbms_utility.format_error_backtrace,
+                              p_err_value   => 'p_first_name = ' ||
+                                               p_first_name || ' ' ||
+                                               'p_last_name = ' ||
+                                               p_last_name,
+                              p_api         => 'search_by.person_search');
+        RAISE ex_error;
+      WHEN OTHERS THEN
+        error_log_pck.err_log(p_err_message => dbms_utility.format_error_backtrace,
+                              p_err_value   => 'p_first_name = ' ||
+                                               p_first_name || ' ' ||
+                                               'p_last_name = ' ||
+                                               p_last_name,
+                              p_api         => 'search_by.person_search');
         RAISE ex_error;
     END;
-    
+  
     RETURN v_contact;
   END;
 
 
 
   FUNCTION plate_search_service(p_plate IN VARCHAR2) RETURN ty_service_list IS
-     v_list ty_service_list;
-     ex_error EXCEPTION;
-     PRAGMA EXCEPTION_INIT(ex_error, -20000);
-   BEGIN
-    
-     BEGIN
-      SELECT ty_service(cc.car_id, cc.service_name, cc.date_of_service)  
+    v_list ty_service_list;
+    ex_error EXCEPTION;
+    PRAGMA EXCEPTION_INIT(ex_error, -20000);
+  BEGIN
+  
+    BEGIN
+      SELECT ty_service(cc.car_id, cc.service_name, cc.date_of_service)
         BULK COLLECT
         INTO v_list
-        FROM car c, table(c.list_of_service) cc
-        WHERE c.license_plate = p_plate; 
-     EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-          RAISE ex_error;
-     END;
-   
+        FROM car c
+            ,TABLE(c.list_of_service) cc
+       WHERE c.license_plate = p_plate;
+    EXCEPTION
+      WHEN no_data_found THEN
+        error_log_pck.err_log(p_err_message => dbms_utility.format_error_backtrace,
+                              p_err_value   => 'p_plate = ' || p_plate,
+                              p_api         => 'search_by.plate_search_service');
+        RAISE ex_error;
+      WHEN OTHERS THEN
+        error_log_pck.err_log(p_err_message => dbms_utility.format_error_backtrace,
+                              p_err_value   => 'p_plate = ' || p_plate,
+                              p_api         => 'search_by.plate_search_service');
+        RAISE ex_error;
+      
+    END;
+  
     RETURN v_list;
-   END;
+  END;
 
 END search_by;
 /

@@ -47,10 +47,7 @@ ALTER TABLE car
   ADD CONSTRAINT car_license_plate_ck CHECK (LENGTH(license_plate) = 7 );
   
 ALTER TABLE car
-  ADD CONSTRAINT car_year_low_ck CHECK (model_year > 1900);
-  
-ALTER TABLE car
-  ADD CONSTRAINT car_year_high_ck CHECK (model_year <= 2020);
+  ADD CONSTRAINT car_year_ck CHECK (model_year BETWEEN 1900 AND (EXTRACT(YEAR FROM registered)));
    
 ALTER TABLE car
   ADD CONSTRAINT car_model_year_ck CHECK (model_year <= EXTRACT(YEAR FROM last_serviced) );

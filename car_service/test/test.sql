@@ -20,17 +20,16 @@ BEGIN
   add_new.new_car(p_license_plate => 'ABC-123',
                   p_brand         => 'toyota',
                   p_model_type    => 'próba',
-                  p_model_year    => 1950,
+                  p_model_year    => 1996,
                   p_mileage       => 77000,
-                  p_owner_id      => 900,
-                  p_last_serviced => TRUNC(SYSDATE));
+                  p_owner_id      => 900);
 END;
 /
 SELECT * FROM car;
 
 
 BEGIN
-  add_new.new_service(p_service_name => 'Teszt javítás',
+  add_new.new_service(p_service_name => 'Próba javítás',
                       p_car_id       => 500,
                       p_waiting_time => 25,
                       p_price        => 2200,
@@ -38,6 +37,7 @@ BEGIN
 END;
 /
 SELECT * FROM service;
+SELECT * FROM car;
 
 ---------------------------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ BEGIN
 END;
 /
 SELECT * FROM CAR;
---SELECT * FROM person WHERE person_id=903;
+--Szervizek száma: SELECT * FROM person WHERE person_id=903;
 
 BEGIN
   change_status.finish_service(500);
@@ -78,13 +78,22 @@ SELECT * FROM max_mileage_vw;
 
 SELECT * FROM max_service_vw;
 
-SELECT * FROM service_history_vw v WHERE v.car_id = 505 ;
+SELECT * FROM service_history_vw v WHERE v.license_plate = 'PRT-629';
 
 
+---------------------------------------------------------------------------------------------------
 
+SELECT * FROM car c WHERE c.license_plate = 'DVF-342';   -- person_id 903 -> 913
+SELECT * FROM person p WHERE p.person_id = '903' ;       -- István Baba -> Zsolt Bajnok
 
+BEGIN
+  change_car.car_change_owner(p_car_plate            => 'DVF-342' ,
+                              p_new_owner_first_name => 'Zsolt',
+                              p_new_owner_last_name  => 'Bajnok');
+END;
+/
 
+SELECT * FROM car_owner_h;
 
-
-
+SELECT * FROM error_log;
 

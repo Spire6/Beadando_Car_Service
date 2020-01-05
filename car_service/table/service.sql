@@ -9,7 +9,7 @@ CREATE TABLE service(
  ,waiting_time         NUMBER 
  ,price                NUMBER(7)         
  ,part_id              NUMBER        
- ,date_of_service      DATE           DEFAULT SYSDATE NOT NULL
+ ,date_of_service      DATE           DEFAULT TRUNC(SYSDATE) NOT NULL
  ,mod_user             varchar2(300)
  ,registered           DATE           NOT NULL
  ,last_modfied         DATE           NOT NULL
