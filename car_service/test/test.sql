@@ -1,5 +1,6 @@
 SELECT * FROM SERVICE;
 SELECT * FROM PERSON;
+SELECT * FROM PART;
 SELECT * FROM SERVICE_STATUS;
 SELECT * FROM CAR;
 ---------------------------------------------------------------------------------------------------
@@ -10,7 +11,7 @@ BEGIN
                      p_city       => 'próba',
                      p_address    => 'cim',
                      p_phone      => '+36209995555',
-                     p_email      => 'vala@mi.he');
+                     p_email      => 'valaki@mail.he');
 END;
 /
 SELECT * FROM person;

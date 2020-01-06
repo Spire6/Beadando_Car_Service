@@ -21,11 +21,20 @@ TABLESPACE users;
 
 
 COMMENT ON TABLE car IS 'Autók tábla';
+COMMENT ON COLUMN car.car_id IS 'Autó ID';
+COMMENT ON COLUMN car.license_plate IS 'Rendszám';
 COMMENT ON COLUMN car.brand IS 'Márka';
 COMMENT ON COLUMN car.model_type IS 'Modell';
 COMMENT ON COLUMN car.model_year IS 'Évjárat';
 COMMENT ON COLUMN car.mileage IS 'Kilóméteróra állása';
+COMMENT ON COLUMN car.owner_id IS 'Tulajdonos ID';
 COMMENT ON COLUMN car.service_status IS 'Szerviz állapota';
-  
+COMMENT ON COLUMN car.last_serviced IS 'Utolsó szerviz dátuma';
+COMMENT ON COLUMN car.mod_user IS 'Módosító felhasználó';
+COMMENT ON COLUMN car.registered IS 'Regisztráció dátuma';
+COMMENT ON COLUMN car.last_modfied IS 'Utolsó módosítás dátuma';
+COMMENT ON COLUMN car.DML_FLAG IS 'DML flag';
+COMMENT ON COLUMN car.version IS 'Verzió';
+
 PROMPT Done.
 
